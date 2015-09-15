@@ -1,0 +1,5 @@
+{
+    "require": {
+        "clusterpoint/php-client-api": "3.*"
+    }
+}
