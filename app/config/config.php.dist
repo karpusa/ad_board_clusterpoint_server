@@ -1,0 +1,16 @@
+<?php
+
+//Setting DB
+$dbDefault = array(
+    'username' => 'Api username',
+    'password' => 'Api password',
+    'documentRootXpath' => 'document',
+    'documentIdXpath' => '//document/id',
+    'params' => array('account' => '0000')
+);
+
+//DB names and settings
+$db['ad'] = $dbDefault;
+$db['category'] = $dbDefault;
+
+unset($dbDefault);

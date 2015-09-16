@@ -3,3 +3,4 @@ composer.lock
 !.gitkeep
 .DS_Store
 .idea
+app/config/config.php
