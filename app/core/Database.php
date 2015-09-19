@@ -1,8 +1,9 @@
 <?php
 namespace App\Core;
 
-class Database{
+class Database {
     private $db;
+
     public $connectionStrings = array(
         'tcp://cloud-eu-0.clusterpoint.com:9007',
         'tcp://cloud-eu-1.clusterpoint.com:9007',

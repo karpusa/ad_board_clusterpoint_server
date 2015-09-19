@@ -9,8 +9,17 @@ $dbDefault = array(
     'params' => array('account' => '0000')
 );
 
-//DB names and settings
-$db['ad'] = $dbDefault;
+/*
+DB names and settings, support multiple list databases
+
+$db['NAME DATABASE'] = array(
+    'username' => 'USERNAME',
+    'password' => 'PASSWORD',
+    'documentRootXpath' => 'document',
+    'documentIdXpath' => '//document/id',
+    'params' => array('account' => 'ACCOUNT ID')
+);
+*/
 $db['category'] = $dbDefault;
 
 unset($dbDefault);

@@ -1,22 +1,14 @@
 <?php
 namespace App\Controller;
 
+use App\Model\categoryModel;
+
 class Category {
     public $app;
 
     public function listAction() {
-        $category = $this->app->db->connect('category');
+        $category = new CategoryModel();
 
-        $ordering = CPS_StringOrdering('name', 'lv', 'ascending');
-        $documents = $category->search('*', null, null, null, $ordering);
-
-        $result=array();
-        foreach ($documents as $id => $document) {
-            $result[] = $document;
-        }
-        $this->app->header();
-        echo json_encode($result);
+        $this->app->renderJson($category->getCategories());
     }
-
-
 }
