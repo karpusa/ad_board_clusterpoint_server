@@ -20,7 +20,7 @@ class Ad {
             );
 
         if (!$post['success']) {
-            unset($post['data']);
+            unset($post['result']);
             //Show errors
             $this->app->renderJson($post);
             return;
@@ -28,7 +28,7 @@ class Ad {
         if ($post['success']) {
             $ad = new AdModel();
             $this->app->renderJson([
-                    'success' => $ad->Add($post['data'])
+                    'success' => $ad->Add($post['result'])
                 ]);
         }
 

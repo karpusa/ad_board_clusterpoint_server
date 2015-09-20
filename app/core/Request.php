@@ -6,6 +6,31 @@ class Request {
 
     }
 
+    public function get($keys, $filter = array()) {
+        $keys = is_array($keys) ? $keys: array();
+        $results = [];
+        $validation = [];
+        $success = true;
+
+        foreach ($keys as $key=>$name)
+        {
+
+            if (isset($_GET[$name])) {
+            if (isset($filter[$name])) {
+                $validation[$name] = $this->validate($_GET[$name], $filter[$name]);
+                $success = !$success ? false: ($validation[$name] ? true: false);
+            }
+                $results[$name] = $_GET[$name];
+            }
+        }
+
+        return [
+                'result' => $results,
+                'validation' => $validation,
+                'success' => $results ? $success : false
+            ];
+    }
+
     public function post($keys, $filter = array()) {
         $keys = is_array($keys) ? $keys: array();
         $results = [];
@@ -25,7 +50,7 @@ class Request {
         }
 
         return [
-                'data' => $results,
+                'result' => $results,
                 'validation' => $validation,
                 'success' => $results ? $success : false
             ];

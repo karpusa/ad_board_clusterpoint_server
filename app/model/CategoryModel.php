@@ -14,7 +14,7 @@ class CategoryModel extends Database {
     }
 
     public function getCategories() {
-        $ordering = CPS_StringOrdering('name', 'lv', 'ascending');
+        $ordering = CPS_StringOrdering('name', 'en', 'ascending');
         $documents = $this->model->search('*', null, null, array('post'=>'no'), $ordering);
 
         $result=array();
@@ -25,7 +25,12 @@ class CategoryModel extends Database {
         return $result;
     }
 
-    public function IsCategory($id) {
+    public function getCategory($id) {
+        $category = $this->model->retrieveSingle($id);
+        return $category;
+    }
+
+    public function isCategory($id) {
         $category = $this->model->lookupSingle($id, array('document' => 'no', 'id' => 'yes'));
         return isset($category->id);
     }

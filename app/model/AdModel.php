@@ -16,7 +16,7 @@ class AdModel extends Database {
 
     public function Add($params) {
         $modelCategory = new CategoryModel();
-        if (!$modelCategory->IsCategory(1)) {
+        if (!$modelCategory->isCategory($params['category'])) {
             return false;
         }
 
