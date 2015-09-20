@@ -13,7 +13,7 @@ class Database {
 
     public function __construct()
     {
-        include_once dirname(__FILE__).'/../config/config.php';
+        include dirname(__FILE__).'/../config/config.php';
         $this->db = $db;
         unset($db);
     }
@@ -26,7 +26,6 @@ class Database {
         if ($this->{$dbname}){
             return $this->{$dbname};
         }
-
         $CPSConnection = new \CPS_Connection(
             new \CPS_LoadBalancer($this->connectionStrings),
             $dbname,
@@ -36,6 +35,7 @@ class Database {
             $this->db[$dbname]['documentIdXpath'],
             $this->db[$dbname]['params']
         );
+        //$CPSConnection->setDebug(true);
         $this->{$dbname} = new \CPS_Simple($CPSConnection);
         return $this->{$dbname};
     }

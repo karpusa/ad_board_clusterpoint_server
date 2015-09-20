@@ -21,5 +21,6 @@ $db['NAME DATABASE'] = array(
 );
 */
 $db['category'] = $dbDefault;
+$db['ad'] = $dbDefault;
 
 unset($dbDefault);

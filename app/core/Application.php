@@ -2,6 +2,7 @@
 namespace App\Core;
 
 use App\Core\Routing;
+use App\Core\Request;
 
 class Application {
     private $routing;
@@ -11,6 +12,7 @@ class Application {
         //$this->db=new Database();
 
         $this->routing=new Routing();
+        $this->request=new Request();
 
         $class = 'App\Controller\\' . $this->routing->controller;
         $controller = new $class();
@@ -18,6 +20,9 @@ class Application {
         $controller->{$this->routing->action}();
     }
 
+    /**
+    * @todo Add to config adress with access allow origin
+    **/
     public function headerJson() {
         header('Content-Type: application/json');
         header("Access-Control-Allow-Origin: *");

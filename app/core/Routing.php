@@ -1,7 +1,7 @@
 <?php
 namespace App\Core;
 
-class Routing{
+class Routing {
     public $controller;
     public $action;
     public $suffix='/';

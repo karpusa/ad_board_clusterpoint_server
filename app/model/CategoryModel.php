@@ -24,4 +24,9 @@ class CategoryModel extends Database {
 
         return $result;
     }
+
+    public function IsCategory($id) {
+        $category = $this->model->lookupSingle($id, array('document' => 'no', 'id' => 'yes'));
+        return isset($category->id);
+    }
 }

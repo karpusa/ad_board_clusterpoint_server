@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-use App\Model\categoryModel;
+use App\Model\CategoryModel;
 
 class Category {
     public $app;
