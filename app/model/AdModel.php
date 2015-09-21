@@ -19,10 +19,10 @@ class AdModel extends Database {
         if (!$modelCategory->isCategory($params['category'])) {
             return false;
         }
+        $id = uniqid();
+        $count=$this->model->insertSingle($id, $params);
 
-        $count=$this->model->insertSingle(uniqid(), $params);
-
-        return ($count>0);
+        return ['success'=>($count>0), 'id'=> $id];
     }
 
     public function getAd($id) {

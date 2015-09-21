@@ -43,9 +43,7 @@ class Ad {
         }
         if ($post['success']) {
             $ad = new AdModel();
-            $this->app->renderJson([
-                    'success' => $ad->Add($post['result'])
-                ]);
+            $this->app->renderJson($ad->Add($post['result']));
         }
     }
 
