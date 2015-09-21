@@ -2,6 +2,7 @@
 namespace App\Model;
 
 use App\Core\Database;
+use App\Model\AdModel;
 
 class CategoryModel extends Database {
     private $name = 'category';
@@ -19,6 +20,19 @@ class CategoryModel extends Database {
 
         $result=array();
         foreach ($documents as $id => $document) {
+            $result[] = $document;
+        }
+
+        return $result;
+    }
+
+    public function getCategoriesWithCount() {
+        $ordering = CPS_StringOrdering('name', 'en', 'ascending');
+        $documents = $this->model->search('*', null, null, array('post'=>'no'), $ordering);
+        $ad = new AdModel();
+        $result=array();
+        foreach ($documents as $id => $document) {
+            $document->count = $ad->countAdsByCategory($document->id);
             $result[] = $document;
         }
 

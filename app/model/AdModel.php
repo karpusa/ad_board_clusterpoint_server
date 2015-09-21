@@ -24,4 +24,24 @@ class AdModel extends Database {
 
         return ($count>0);
     }
+
+    public function getAdsByCategory($id) {
+        $query = CPS_Term($id, 'category');
+        $documents = $this->model->search($query, null, null, null, null);
+
+        $result=array();
+        foreach ($documents as $id => $document) {
+            $result[] = $document;
+        }
+
+        return $result;
+
+    }
+
+    public function countAdsByCategory($id) {
+        $query = CPS_Term($id, 'category');
+        $documents = $this->model->search($query, null, null, array('document' => 'no', 'id' => 'yes'), null);
+
+        return count($documents);
+    }
 }

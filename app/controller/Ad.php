@@ -8,7 +8,6 @@ class Ad {
     public $app;
 
     public function addAction() {
-
         $post = $this->app->request->post(
                 array('title', 'message', 'price', 'category'),
                 array(
@@ -31,7 +30,22 @@ class Ad {
                     'success' => $ad->Add($post['result'])
                 ]);
         }
+    }
 
-
+    public function listByCategoryAction() {
+        $get = $this->app->request->get(
+                array('id'),
+                array('id'=>'required')
+            );
+        if (!$get['success']) {
+            unset($get['result']);
+            //Show errors
+            $this->app->renderJson($get);
+            return;
+        }
+        if ($get['success']) {
+            $ad = new AdModel();
+            $this->app->renderJson(['result'=>$ad->getAdsByCategory($get['result']['id'])]+(array)$get);
+        }
     }
 }

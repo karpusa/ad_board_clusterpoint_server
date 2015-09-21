@@ -11,6 +11,11 @@ class Category {
         $this->app->renderJson($category->getCategories());
     }
 
+    public function listWithCountAction() {
+        $category = new CategoryModel();
+        $this->app->renderJson($category->getCategoriesWithCount());
+    }
+
     public function getAction() {
         $get = $this->app->request->get(
                 array('id'),
@@ -28,6 +33,5 @@ class Category {
             $category = new CategoryModel();
             $this->app->renderJson(['result'=>$category->getCategory($get['result']['id'])]+(array)$get);
         }
-
     }
 }
