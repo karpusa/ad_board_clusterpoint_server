@@ -40,8 +40,7 @@ class CategoryModel extends Database {
     }
 
     public function getCategory($id) {
-        $category = $this->model->retrieveSingle($id);
-        return $category;
+        return $this->model->retrieveSingle($id);
     }
 
     public function isCategory($id) {

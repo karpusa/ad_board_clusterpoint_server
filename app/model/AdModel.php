@@ -25,6 +25,16 @@ class AdModel extends Database {
         return ($count>0);
     }
 
+    public function getAd($id) {
+        $ad = $this->model->retrieveSingle($id);
+        if (isset($ad->category)) {
+            $modelCategory = new CategoryModel();
+            $category = $modelCategory->getCategory($ad->category);
+            $ad->categoryname = $category->name;
+        }
+        return $ad;
+    }
+
     public function getAdsByCategory($id) {
         $query = CPS_Term($id, 'category');
         $documents = $this->model->search($query, null, null, null, null);
