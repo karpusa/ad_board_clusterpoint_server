@@ -1,3 +1,9 @@
+Ad board backend API with DB NOSQL Clusterpoint
+
+Client side: https://github.com/karpusa/ad_board_clusterpoint
+
+### Run the Application
+
 Use `composer install`
 
 Rename "app/config/config.php.dist" to "app/config/config.php" and change settings to database
