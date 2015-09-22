@@ -7,5 +7,6 @@ $routing = array(
     'category'=>array('controller'=>'Category','action'=>'getAction'),
     'ad'=>array('controller'=>'Ad','action'=>'getAction'),
     'ad/add'=>array('controller'=>'Ad','action'=>'addAction'),
-    'ad/listbycategory'=>array('controller'=>'Ad','action'=>'listByCategoryAction')
+    'ad/listbycategory'=>array('controller'=>'Ad','action'=>'listByCategoryAction'),
+    'ad/search'=>array('controller'=>'Ad','action'=>'searchAction')
 );

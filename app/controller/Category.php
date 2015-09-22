@@ -31,7 +31,7 @@ class Category {
 
         if ($get['success']) {
             $category = new CategoryModel();
-            $this->app->renderJson(['result'=>$category->getCategory($get['result']['id'])]+(array)$get);
+            $this->app->renderJson(array('result'=>$category->getCategory($get['result']['id']))+(array)$get);
         }
     }
 }

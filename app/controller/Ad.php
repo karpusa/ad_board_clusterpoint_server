@@ -20,7 +20,7 @@ class Ad {
         }
         if ($get['success']) {
             $ad = new AdModel();
-            $this->app->renderJson(['result'=>$ad->getAd($get['result']['id'])]+(array)$get);
+            $this->app->renderJson(array('result'=>$ad->getAd($get['result']['id']))+(array)$get);
         }
     }
 
@@ -34,7 +34,6 @@ class Ad {
                         'category'=>'int',
                     )
             );
-
         if (!$post['success']) {
             unset($post['result']);
             //Show errors
@@ -60,7 +59,24 @@ class Ad {
         }
         if ($get['success']) {
             $ad = new AdModel();
-            $this->app->renderJson(['result'=>$ad->getAdsByCategory($get['result']['id'])]+(array)$get);
+            $this->app->renderJson(array('result'=>$ad->getAdsByCategory($get['result']['id']))+(array)$get);
+        }
+    }
+
+    public function searchAction() {
+        $get = $this->app->request->get(
+                array('searchTerm'),
+                array('searchTerm'=>'required')
+            );
+        if (!$get['success']) {
+            unset($get['result']);
+            //Show errors
+            $this->app->renderJson($get);
+            return;
+        }
+        if ($get['success']) {
+            $ad = new AdModel();
+            $this->app->renderJson(array('result'=>$ad->Search($get['result']['searchTerm']))+(array)$get);
         }
     }
 }

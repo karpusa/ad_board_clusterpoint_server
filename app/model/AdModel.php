@@ -22,7 +22,7 @@ class AdModel extends Database {
         $id = uniqid();
         $count=$this->model->insertSingle($id, $params);
 
-        return ['success'=>($count>0), 'id'=> $id];
+        return array('success'=>($count>0), 'id'=> $id);
     }
 
     public function getAd($id) {
@@ -53,5 +53,14 @@ class AdModel extends Database {
         $documents = $this->model->search($query, null, null, array('document' => 'no', 'id' => 'yes'), null);
 
         return count($documents);
+    }
+
+    public function search($term) {
+        $query = CPS_Term('*'.$term.'*');
+        $documents = $this->model->search($query, null, null, null, null);
+        foreach ($documents as $id => $document) {
+            $result[] = $document;
+        }
+        return $result;
     }
 }

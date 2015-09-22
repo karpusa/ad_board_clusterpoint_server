@@ -3,6 +3,7 @@ namespace App\Core;
 
 class Database {
     private $db;
+    protected $connection;
 
     public $connectionStrings = array(
         'tcp://cloud-eu-0.clusterpoint.com:9007',
@@ -36,6 +37,7 @@ class Database {
             $this->db[$dbname]['params']
         );
         //$CPSConnection->setDebug(true);
+        $this->connection = $CPSConnection;
         $this->{$dbname} = new \CPS_Simple($CPSConnection);
         return $this->{$dbname};
     }

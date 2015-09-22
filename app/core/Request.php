@@ -8,8 +8,8 @@ class Request {
 
     public function get($keys, $filter = array()) {
         $keys = is_array($keys) ? $keys: array();
-        $results = [];
-        $validation = [];
+        $results = array();
+        $validation = array();
         $success = true;
 
         foreach ($keys as $key=>$name)
@@ -24,17 +24,17 @@ class Request {
             }
         }
 
-        return [
+        return array(
                 'result' => $results,
                 'validation' => $validation,
                 'success' => $results ? $success : false
-            ];
+            );
     }
 
     public function post($keys, $filter = array()) {
         $keys = is_array($keys) ? $keys: array();
-        $results = [];
-        $validation = [];
+        $results = array();
+        $validation = array();
         $success = true;
 
         foreach ($keys as $key=>$name)
@@ -49,11 +49,11 @@ class Request {
             }
         }
 
-        return [
+        return array(
                 'result' => $results,
                 'validation' => $validation,
                 'success' => $results ? $success : false
-            ];
+            );
     }
 
     public function validate($value, $filter) {
